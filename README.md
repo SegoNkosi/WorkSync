@@ -11,3 +11,5 @@ So I thought...what if there was a dedicated platform just for project chats? A 
 This is not meant to be a complicated project but a project where people can just communicate and get work done. It does not need the many features other chat apps have but just allow work teams to do basic work and communicate about basic work without having to be afraid that their perosnla life and work life will mix.
 
 For this project I used React and Firebase. Recat for the frontend and firebase to handle the databse and storage of the chats
+
+React Js used for frontend
