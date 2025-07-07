@@ -7,7 +7,7 @@
     justify-content: space-evenly;
 }
 .login .logo{
-    width: max(20vw,200px);
+    width: max(20vw,300px);
 }
 .login-form{
     background: white;
@@ -24,11 +24,11 @@ font-weight: 500px;
   padding: 8px 10px;
   border: 1px solid #c9c9c9;
   border-radius: 4px;
-  outline-color: #077efF; 
+  outline-color: #32cd32; 
 }
 .login-form button{
     padding: 10px;
-    background-color: #077efF;
+    background-color: #138808;
     color: white;
     font-size: 16px;
     border: none;
