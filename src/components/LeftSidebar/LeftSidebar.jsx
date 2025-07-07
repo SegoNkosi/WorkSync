@@ -22,7 +22,7 @@ const LeftSidebar = () => {
        <div key={index} className="friends">
        <img src={assets.profile_img} alt="" />
        <div>
-           <p>Richard Sanford</p>
+           <p>Bonko Khoza</p>
            <span>Hello, How are you?</span>
        </div>
    </div> 

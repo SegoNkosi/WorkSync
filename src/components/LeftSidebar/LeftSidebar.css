@@ -42,7 +42,7 @@
 .ls-search input::placeholder{
    color: #c8c8c8; 
 }
-.ls-ist{
+.ls-list{
 display: flex;
 flex-direction: column;
 height: 70%;
