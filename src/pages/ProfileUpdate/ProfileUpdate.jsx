@@ -14,7 +14,7 @@ const ProfileUpdate = () => {
           <label htmlFor="avatar">
             <input onChange={(e)=>setImage(e.target.files[0])} type="file" id='avatar' accept='.png, .jpg, .jpeg' hidden/>
             <img src={image? URL.createObjectURL(image) : assets.avatar_icon} alt="" />
-            Upload profile image
+            Upload profile imageno
           </label>
           <input type="text" placeholder='Your name' required />
           <textarea placeholder='Write profile bio' required></textarea>
