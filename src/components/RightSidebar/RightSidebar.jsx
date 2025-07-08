@@ -8,7 +8,7 @@ const RightSidebar = () => {
       <div className="rs-profile">
         <img src={assets.profile_img} alt='' />
         <h3>Bonko Khoza<img src={assets.green_dot} className='dot' alt='' /></h3>
-        <p>Hey there. I am using WorkSync</p>
+        <p>Hey there! I am using WorkSync</p>
       </div>
       <hr></hr>
       <div className="rs-media">
