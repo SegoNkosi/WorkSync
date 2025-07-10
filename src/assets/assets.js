@@ -15,6 +15,11 @@ import add_icon from './add_icon.png'
 import menu_icon from './menu_icon.png'
 import arrow_icon from './arrow_icon.png'
 import green_dot from './green_dot.png'
+import profile_hloni from './profile_hloni.png'
+import profile_chike from './profile_chike.png'
+import profile_danny from './profile_danny.png'
+import profile_rasheeda from './profile_rasheeda.png'
+
 
 const assets = {
     avatar_icon,
@@ -33,7 +38,11 @@ const assets = {
     add_icon,
     menu_icon,
     arrow_icon,
-    green_dot
+    green_dot,
+    profile_chike,
+    profile_danny,
+    profile_hloni,
+    profile_rasheeda
 }
 
 export default assets;

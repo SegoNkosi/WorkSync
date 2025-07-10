@@ -1,62 +1,82 @@
-import React from 'react'
-import './ChatBox.css'
-import assets from '../../assets/assets'
+import React, { useState, useRef, useEffect } from 'react';
+import './ChatBox.css';
+import assets from '../../assets/assets';
 
-    function ChatBox() {
-        return (
-            <div className='chat-box'>
+function ChatBox() {
+  const [message, setMessage] = useState('');
+  const [image, setImage] = useState(null);
+  const [messages, setMessages] = useState([]);
+  const messagesEndRef = useRef(null);
 
-                <div className="chat-user">
-                    <img src={assets.profile_img} alt="" />
-                    <p>Bonko Khoza <img className='dot' src={assets.green_dot} alt=""/></p>
-                    <img src={assets.help_icon} className='help' alt=""/>
-                </div>
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
 
-<div className="chat-msg">
-    <div className="s-msg">
-        <p className='msg'>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <div>
-            <img src={assets.profile_img} alt=""/>
-            <p>2:30 PM</p>
-        </div>
-    </div>
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
-    <div className="s-msg">
-        <img className='msg-img' src={assets.pic1} alt="" />
-        <div>
-            <img src={assets.profile_img} alt=""/>
-            <p>2:30 PM</p>
-        </div>
-    </div>
+  const handleSend = () => {
+    if (!message && !image) return;
 
+    const newMessage = {
+      id: Date.now(),
+      text: message,
+      image: image ? URL.createObjectURL(image) : null,
+      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      sender: 'me',
+    };
 
-    <div className="r-msg">
-        <p className='msg'>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-        <div>
-            <img src={assets.profile_img} alt=""/>
-            <p>2:30 PM</p>
-        </div>
+    setMessages([...messages, newMessage]);
+    setMessage('');
+    setImage(null);
+  };
 
-</div>
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+  };
 
-</div>
+  return (
+    <div className='chat-box'>
+      
+      <div className="chat-user">
+        <img src={assets.profile_img} alt="" />
+        <p>Bonko Khoza <img className='dot' src={assets.green_dot} alt="" /></p>
+        <img src={assets.help_icon} className='help' alt="" />
+      </div>
 
-
-
-
-
-<div className="chat-input">
-    <input type="text" placeholder="Send a message" />
-    <input type="file" id='image' accept='image/png, image/jpeg' hidden/>
-    <label htmlFor='image'>
-        <img src={assets.gallery_icon} alt='' />
-    </label>
-    <img src={assets.send_button} alt='' />
-    
-</div>
-
+      
+      <div className="chat-msg" style={{ overflowY: 'auto', maxHeight: '400px' }}>
+        {messages.map(msg => (
+          <div className={msg.sender === 'me' ? 'r-msg' : 's-msg'} key={msg.id}>
+            {msg.text && <p className='msg'>{msg.text}</p>}
+            {msg.image && <img className='msg-img' src={msg.image} alt="sent" />}
+            <div>
+              <img src={assets.profile_danny} alt="user" />
+              <p>{msg.time}</p>
             </div>
-        )
-    }
- 
-export default ChatBox
+          </div>
+        ))}
+        <div ref={messagesEndRef} />
+      </div>
+
+      
+      <div className="chat-input">
+        <input
+          type="text"
+          placeholder="Send a message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
+        <input type="file" id='image' accept='image/png, image/jpeg' hidden onChange={handleImageChange} />
+        <label htmlFor='image'>
+          <img src={assets.gallery_icon} alt='Upload' />
+        </label>
+        <img src={assets.send_button} alt='Send' onClick={handleSend} style={{ cursor: 'pointer' }} />
+      </div>
+    </div>
+  );
+}
+
+export default ChatBox;
